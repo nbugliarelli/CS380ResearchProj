@@ -1,0 +1,3 @@
+C:\Unreal\CS380ResearchProj\Source\CS380ResearchProject\CS380ResearchProject.Build.cs
+C:\Unreal\CS380ResearchProj\Source\CS380ResearchProject.Target.cs
+C:\Unreal\CS380ResearchProj\Source\CS380ResearchProjectEditor.Target.cs

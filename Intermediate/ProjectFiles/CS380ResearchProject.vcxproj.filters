@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\CS380ResearchProject.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{EC493143-9781-4C34-AA1B-DB2FB2B6053E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\CS380ResearchProject.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\CS380ResearchProjectEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{297FD322-153D-4743-BBC5-E4BF2F3B51DC}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\CS380ResearchProject">
+      <UniqueIdentifier>{35350182-F3C5-403B-886B-5590F5C4D803}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\CS380ResearchProject\CS380ResearchProject.Build.cs">
+      <Filter>Source\CS380ResearchProject</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\CS380ResearchProject\CS380ResearchProject.cpp">
+      <Filter>Source\CS380ResearchProject</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\CS380ResearchProject\CS380ResearchProject.h">
+      <Filter>Source\CS380ResearchProject</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\CS380ResearchProject\CS380ResearchProjectCharacter.cpp">
+      <Filter>Source\CS380ResearchProject</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\CS380ResearchProject\CS380ResearchProjectCharacter.h">
+      <Filter>Source\CS380ResearchProject</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\CS380ResearchProject\CS380ResearchProjectGameMode.cpp">
+      <Filter>Source\CS380ResearchProject</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\CS380ResearchProject\CS380ResearchProjectGameMode.h">
+      <Filter>Source\CS380ResearchProject</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\CS380ResearchProject\MyDude.cpp">
+      <Filter>Source\CS380ResearchProject</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\CS380ResearchProject\MyDude.h">
+      <Filter>Source\CS380ResearchProject</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\CS380ResearchProject\ActionManager.h">
+      <Filter>Source\CS380ResearchProject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\CS380ResearchProject\AIPercievedActionManager.h">
+      <Filter>Source\CS380ResearchProject</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\CS380ResearchProject\ActionManager.cpp">
+      <Filter>Source\CS380ResearchProject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\CS380ResearchProject\AIPercievedActionManager.cpp">
+      <Filter>Source\CS380ResearchProject</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

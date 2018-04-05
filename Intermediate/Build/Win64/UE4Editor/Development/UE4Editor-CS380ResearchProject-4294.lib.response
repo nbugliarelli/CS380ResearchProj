@@ -1,0 +1,19 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-CS380ResearchProject-4294.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\Program Files\Epic Games\UE_4.16\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h.obj"
+"C:\Unreal\CS380ResearchProj\Intermediate\Build\Win64\UE4Editor\Development\CS380ResearchProject\ActionManager.cpp.obj"
+"C:\Unreal\CS380ResearchProj\Intermediate\Build\Win64\UE4Editor\Development\CS380ResearchProject\AIPercievedActionManager.cpp.obj"
+"C:\Unreal\CS380ResearchProj\Intermediate\Build\Win64\UE4Editor\Development\CS380ResearchProject\CS380ResearchProject.cpp.obj"
+"C:\Unreal\CS380ResearchProj\Intermediate\Build\Win64\UE4Editor\Development\CS380ResearchProject\CS380ResearchProjectCharacter.cpp.obj"
+"C:\Unreal\CS380ResearchProj\Intermediate\Build\Win64\UE4Editor\Development\CS380ResearchProject\CS380ResearchProjectGameMode.cpp.obj"
+"C:\Unreal\CS380ResearchProj\Intermediate\Build\Win64\UE4Editor\Development\CS380ResearchProject\MyDude.cpp.obj"
+"C:\Unreal\CS380ResearchProj\Intermediate\Build\Win64\UE4Editor\Development\CS380ResearchProject\CS380ResearchProject.generated.cpp.obj"
+"C:\Program Files\Epic Games\UE_4.16\Engine\Intermediate\Build\Win64\UE4Editor\Development\CS380ResearchProject\PCLaunch.rc.res"
+"C:\Program Files\Epic Games\UE_4.16\Engine\Intermediate\Build\Win64\UE4Editor\Development\ModuleVersionResource.rc.inl.res"
+/OUT:"C:\Unreal\CS380ResearchProj\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-CS380ResearchProject-4294.lib"
