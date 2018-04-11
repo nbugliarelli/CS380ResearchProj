@@ -26,6 +26,7 @@ void EmptyLinkFunctionForGeneratedCode1CS380ResearchProject() {}
 
 	CS380RESEARCHPROJECT_API class UEnum* Z_Construct_UEnum_CS380ResearchProject_PlayerActions();
 	CS380RESEARCHPROJECT_API class UFunction* Z_Construct_UFunction_UAIPercievedActionManager_RecieveAction();
+	CS380RESEARCHPROJECT_API class UFunction* Z_Construct_UFunction_UAIPercievedActionManager_SetGameTime();
 	CS380RESEARCHPROJECT_API class UClass* Z_Construct_UClass_UAIPercievedActionManager_NoRegister();
 	CS380RESEARCHPROJECT_API class UClass* Z_Construct_UClass_UAIPercievedActionManager();
 	CS380RESEARCHPROJECT_API class UClass* Z_Construct_UClass_ABaseCharacter_NoRegister();
@@ -81,8 +82,9 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_PlayerActions(PlayerActi
 		UClass* Class = UAIPercievedActionManager::StaticClass();
 		static const TNameNativePtrPair<ANSICHAR> AnsiFuncs[] = {
 			{ "RecieveAction", (Native)&UAIPercievedActionManager::execRecieveAction },
+			{ "SetGameTime", (Native)&UAIPercievedActionManager::execSetGameTime },
 		};
-		FNativeFunctionRegistrar::RegisterFunctions(Class, AnsiFuncs, 1);
+		FNativeFunctionRegistrar::RegisterFunctions(Class, AnsiFuncs, 2);
 	}
 	UFunction* Z_Construct_UFunction_UAIPercievedActionManager_RecieveAction()
 	{
@@ -99,6 +101,27 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_PlayerActions(PlayerActi
 			UProperty* NewProp_actor = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("actor"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(actor, AIPercievedActionManager_eventRecieveAction_Parms), 0x0010000000000080, Z_Construct_UClass_AActor_NoRegister());
 			UProperty* NewProp_action = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("action"), RF_Public|RF_Transient|RF_MarkAsNative) UEnumProperty(CPP_PROPERTY_BASE(action, AIPercievedActionManager_eventRecieveAction_Parms), 0x0010000000000080, Z_Construct_UEnum_CS380ResearchProject_PlayerActions());
 			UProperty* NewProp_action_Underlying = new(EC_InternalUseOnlyConstructor, NewProp_action, TEXT("UnderlyingType"), RF_Public|RF_Transient|RF_MarkAsNative) UByteProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("AIPercievedActionManager.h"));
+#endif
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_UAIPercievedActionManager_SetGameTime()
+	{
+		struct AIPercievedActionManager_eventSetGameTime_Parms
+		{
+			float Time;
+		};
+		UObject* Outer=Z_Construct_UClass_UAIPercievedActionManager();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("SetGameTime"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), NULL, 0x04020401, 65535, sizeof(AIPercievedActionManager_eventSetGameTime_Parms));
+			UProperty* NewProp_Time = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("Time"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(Time, AIPercievedActionManager_eventSetGameTime_Parms), 0x0010000000000080);
 			ReturnFunction->Bind();
 			ReturnFunction->StaticLink();
 #if WITH_METADATA
@@ -126,8 +149,10 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_PlayerActions(PlayerActi
 				OuterClass->ClassFlags |= 0x20B00080;
 
 				OuterClass->LinkChild(Z_Construct_UFunction_UAIPercievedActionManager_RecieveAction());
+				OuterClass->LinkChild(Z_Construct_UFunction_UAIPercievedActionManager_SetGameTime());
 
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UAIPercievedActionManager_RecieveAction(), "RecieveAction"); // 439394419
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UAIPercievedActionManager_SetGameTime(), "SetGameTime"); // 2526141100
 				static TCppClassTypeInfo<TCppClassTypeTraits<UAIPercievedActionManager> > StaticCppClassTypeInfo;
 				OuterClass->SetCppTypeInfo(&StaticCppClassTypeInfo);
 				OuterClass->StaticLink();
@@ -143,7 +168,7 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_PlayerActions(PlayerActi
 		check(OuterClass->GetClass());
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(UAIPercievedActionManager, 4287124825);
+	IMPLEMENT_CLASS(UAIPercievedActionManager, 4177066235);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_UAIPercievedActionManager(Z_Construct_UClass_UAIPercievedActionManager, &UAIPercievedActionManager::StaticClass, TEXT("/Script/CS380ResearchProject"), TEXT("UAIPercievedActionManager"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(UAIPercievedActionManager);
 	void ABaseCharacter::StaticRegisterNativesABaseCharacter()
@@ -321,8 +346,8 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), nullptr, FName(TEXT("/Script/CS380ResearchProject")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0x350748BF;
-			Guid.B = 0x5D902332;
+			Guid.A = 0x0A648478;
+			Guid.B = 0x111B8E75;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);
