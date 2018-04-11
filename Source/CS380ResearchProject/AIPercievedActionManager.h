@@ -4,7 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include <queue>
 #include "AIPercievedActionManager.generated.h"
+
+
 
 UENUM(BlueprintType)
 enum class PlayerActions : uint8
@@ -12,6 +15,21 @@ enum class PlayerActions : uint8
 	Punch UMETA(DisplayName = "Punch"),
 	Kick UMETA(DisplayName = "Kick"),
 	Block UMETA(DisplayName = "Block")
+};
+
+class ActionLogic
+{
+public:
+    std::queue<std::pair<PlayerActions, float>> ActionList;
+    float RollingWindow;
+    float Time;
+
+    float GetRollingWindow();
+    void SetRollingWindow(float Window);
+    void PushAction(PlayerActions Action);
+    float GetGameTime();
+    void SetGameTime(float time);
+    PlayerActions PredictNextMove();
 };
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
@@ -35,5 +53,8 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void RecieveAction(PlayerActions action, AActor* actor);
+
+    UFUNCTION(BlueprintCallable)
+    void SetGameTime(float Time);
 	
 };

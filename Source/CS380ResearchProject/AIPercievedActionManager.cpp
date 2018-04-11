@@ -3,6 +3,8 @@
 #include "AIPercievedActionManager.h"
 
 
+ActionLogic* AL;
+
 // Sets default values for this component's properties
 UAIPercievedActionManager::UAIPercievedActionManager()
 {
@@ -20,7 +22,7 @@ void UAIPercievedActionManager::BeginPlay()
 	Super::BeginPlay();
 
 	// ...
-
+    AL = new ActionLogic;
 	myOwner = GetOwner();
 	
 }
@@ -30,11 +32,55 @@ void UAIPercievedActionManager::BeginPlay()
 void UAIPercievedActionManager::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
+    printf("%d", AL->PredictNextMove());
 	// ...
+
 }
 
 void UAIPercievedActionManager::RecieveAction(PlayerActions action, AActor* actor)
 {
+    AL->PushAction(action);
+}
 
+void UAIPercievedActionManager::SetGameTime(float Time)
+{
+    AL->SetGameTime(Time);
+    //AL.PushAction(action, Time);
+}
+
+float ActionLogic::GetRollingWindow()
+{
+    return RollingWindow;
+}
+
+void ActionLogic::SetRollingWindow(float Window)
+{
+    RollingWindow = Window;
+}
+
+void ActionLogic::PushAction(PlayerActions Action)
+{
+    ActionList.push(std::pair<PlayerActions, float>(Action, Time));
+}
+
+float ActionLogic::GetGameTime()
+{
+    return Time;
+}
+
+void ActionLogic::SetGameTime(float time)
+{
+    Time = time;
+}
+
+PlayerActions ActionLogic::PredictNextMove()
+{
+    if (ActionList.empty())
+    {
+        return PlayerActions::Block;
+    }
+    else
+    {
+        return ActionList.front().first;
+    }
 }
