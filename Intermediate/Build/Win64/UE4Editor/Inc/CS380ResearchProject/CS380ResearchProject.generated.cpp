@@ -17,6 +17,7 @@ void EmptyLinkFunctionForGeneratedCode1CS380ResearchProject() {}
 // Cross Module References
 	ENGINE_API class UClass* Z_Construct_UClass_AActor_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_UActorComponent();
+	ENGINE_API class UClass* Z_Construct_UClass_APawn();
 	ENGINE_API class UClass* Z_Construct_UClass_ACharacter();
 	ENGINE_API class UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
@@ -27,6 +28,8 @@ void EmptyLinkFunctionForGeneratedCode1CS380ResearchProject() {}
 	CS380RESEARCHPROJECT_API class UFunction* Z_Construct_UFunction_UAIPercievedActionManager_RecieveAction();
 	CS380RESEARCHPROJECT_API class UClass* Z_Construct_UClass_UAIPercievedActionManager_NoRegister();
 	CS380RESEARCHPROJECT_API class UClass* Z_Construct_UClass_UAIPercievedActionManager();
+	CS380RESEARCHPROJECT_API class UClass* Z_Construct_UClass_ABaseCharacter_NoRegister();
+	CS380RESEARCHPROJECT_API class UClass* Z_Construct_UClass_ABaseCharacter();
 	CS380RESEARCHPROJECT_API class UClass* Z_Construct_UClass_ACS380ResearchProjectCharacter_NoRegister();
 	CS380RESEARCHPROJECT_API class UClass* Z_Construct_UClass_ACS380ResearchProjectCharacter();
 	CS380RESEARCHPROJECT_API class UClass* Z_Construct_UClass_ACS380ResearchProjectGameMode_NoRegister();
@@ -143,6 +146,44 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_PlayerActions(PlayerActi
 	IMPLEMENT_CLASS(UAIPercievedActionManager, 4287124825);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_UAIPercievedActionManager(Z_Construct_UClass_UAIPercievedActionManager, &UAIPercievedActionManager::StaticClass, TEXT("/Script/CS380ResearchProject"), TEXT("UAIPercievedActionManager"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(UAIPercievedActionManager);
+	void ABaseCharacter::StaticRegisterNativesABaseCharacter()
+	{
+	}
+	UClass* Z_Construct_UClass_ABaseCharacter_NoRegister()
+	{
+		return ABaseCharacter::StaticClass();
+	}
+	UClass* Z_Construct_UClass_ABaseCharacter()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_APawn();
+			Z_Construct_UPackage__Script_CS380ResearchProject();
+			OuterClass = ABaseCharacter::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= 0x20900080;
+
+
+				static TCppClassTypeInfo<TCppClassTypeTraits<ABaseCharacter> > StaticCppClassTypeInfo;
+				OuterClass->SetCppTypeInfo(&StaticCppClassTypeInfo);
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("HideCategories"), TEXT("Navigation"));
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("BaseCharacter.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("BaseCharacter.h"));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	IMPLEMENT_CLASS(ABaseCharacter, 3706582638);
+	static FCompiledInDefer Z_CompiledInDefer_UClass_ABaseCharacter(Z_Construct_UClass_ABaseCharacter, &ABaseCharacter::StaticClass, TEXT("/Script/CS380ResearchProject"), TEXT("ABaseCharacter"), false, nullptr, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(ABaseCharacter);
 	void ACS380ResearchProjectCharacter::StaticRegisterNativesACS380ResearchProjectCharacter()
 	{
 	}
@@ -280,8 +321,8 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), nullptr, FName(TEXT("/Script/CS380ResearchProject")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0x48563145;
-			Guid.B = 0xC700283A;
+			Guid.A = 0x350748BF;
+			Guid.B = 0x5D902332;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);

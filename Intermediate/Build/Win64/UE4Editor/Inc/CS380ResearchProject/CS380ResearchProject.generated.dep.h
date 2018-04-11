@@ -8,6 +8,9 @@
 #ifndef CS380RESEARCHPROJECT_AIPercievedActionManager_generated_h
 	#include "AIPercievedActionManager.h"
 #endif
+#ifndef CS380RESEARCHPROJECT_BaseCharacter_generated_h
+	#include "BaseCharacter.h"
+#endif
 #ifndef CS380RESEARCHPROJECT_CS380ResearchProjectCharacter_generated_h
 	#include "CS380ResearchProjectCharacter.h"
 #endif

@@ -67,12 +67,18 @@
     <ClInclude Include="..\..\Source\CS380ResearchProject\AIPercievedActionManager.h">
       <Filter>Source\CS380ResearchProject</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\CS380ResearchProject\BaseCharacter.h">
+      <Filter>Source\CS380ResearchProject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\CS380ResearchProject\ActionManager.cpp">
       <Filter>Source\CS380ResearchProject</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\CS380ResearchProject\AIPercievedActionManager.cpp">
+      <Filter>Source\CS380ResearchProject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\CS380ResearchProject\BaseCharacter.cpp">
       <Filter>Source\CS380ResearchProject</Filter>
     </ClCompile>
   </ItemGroup>

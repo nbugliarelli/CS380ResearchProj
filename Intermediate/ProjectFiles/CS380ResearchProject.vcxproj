@@ -570,9 +570,11 @@
     <None Include="..\..\Source\CS380ResearchProject\CS380ResearchProject.Build.cs" />
     <ClCompile Include="..\..\Source\CS380ResearchProject\ActionManager.cpp" />
     <ClCompile Include="..\..\Source\CS380ResearchProject\AIPercievedActionManager.cpp" />
+    <ClCompile Include="..\..\Source\CS380ResearchProject\BaseCharacter.cpp" />
     <ClCompile Include="..\..\Source\CS380ResearchProject\CS380ResearchProject.cpp" />
     <ClInclude Include="..\..\Source\CS380ResearchProject\ActionManager.h" />
     <ClInclude Include="..\..\Source\CS380ResearchProject\AIPercievedActionManager.h" />
+    <ClInclude Include="..\..\Source\CS380ResearchProject\BaseCharacter.h" />
     <ClInclude Include="..\..\Source\CS380ResearchProject\CS380ResearchProject.h" />
     <ClCompile Include="..\..\Source\CS380ResearchProject\CS380ResearchProjectCharacter.cpp" />
     <ClInclude Include="..\..\Source\CS380ResearchProject\CS380ResearchProjectCharacter.h" />
