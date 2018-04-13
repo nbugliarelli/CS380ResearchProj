@@ -23,7 +23,14 @@ public:
     std::queue<std::pair<PlayerActions, float>> ActionList;
     float RollingWindow;
     float Time;
+    int PercentRandomAction;
+    int PercentCertainty;
 
+    PlayerActions TakeRandomAction();
+    int GetPercentRandomAction();
+    void SetPercentRandomAction(int x);
+    int GetPercentCertainty();
+    void SetPercentCertainty(int x);
     float GetRollingWindow();
     void SetRollingWindow(float Window);
     void PushAction(PlayerActions Action);

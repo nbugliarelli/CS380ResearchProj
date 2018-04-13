@@ -45,7 +45,6 @@ void UAIPercievedActionManager::RecieveAction(PlayerActions action, AActor* acto
 void UAIPercievedActionManager::SetGameTime(float Time)
 {
     AL->SetGameTime(Time);
-    //AL.PushAction(action, Time);
 }
 
 float ActionLogic::GetRollingWindow()
@@ -75,12 +74,18 @@ void ActionLogic::SetGameTime(float time)
 
 PlayerActions ActionLogic::PredictNextMove()
 {
-    if (ActionList.empty())
+    int PercentChance = rand() % 100 + 1;
+    if (PercentChance > PercentRandomAction)
     {
-        return PlayerActions::Block;
+        
+        int HighestPercentNextAction;
+        //Do math and such.
+
+        if(HighestPercentNextAction > PercentCertainty)
+        {
+            //return percieved next action if we can determine one within acceptable margin of error
+            return PlayerActions::Block;
+        }
     }
-    else
-    {
-        return ActionList.front().first;
-    }
+    return TakeRandomAction();
 }
