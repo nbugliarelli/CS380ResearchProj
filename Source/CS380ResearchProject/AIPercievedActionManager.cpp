@@ -78,7 +78,7 @@ PlayerActions ActionLogic::PredictNextMove()
     if (PercentChance > PercentRandomAction)
     {
         
-        int HighestPercentNextAction;
+        int HighestPercentNextAction = 0;
         //Do math and such.
 
         if(HighestPercentNextAction > PercentCertainty)
@@ -88,4 +88,9 @@ PlayerActions ActionLogic::PredictNextMove()
         }
     }
     return TakeRandomAction();
+}
+
+PlayerActions ActionLogic::TakeRandomAction()
+{
+    return PlayerActions::Block;
 }
