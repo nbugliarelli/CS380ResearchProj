@@ -1,7 +1,6 @@
 
 *.log
-*.log
 *.db
-CS380ResearchProject.VC.VC.opendb
-Saved/Logs/CS380ResearchProject.log
-Binaries/Win64/UE4Editor-CS380ResearchProject.dll
+*.obj
+*.pdb
+*.response
