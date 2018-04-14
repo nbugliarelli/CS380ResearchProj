@@ -32,7 +32,6 @@ public:
     int PercentRandomAction;
     int PercentCertainty;
     int TimeDelay;
-    int TimeRemembered;
 
     //Methods that actually do things
     void PushAction(PlayerActions Action);
@@ -42,8 +41,6 @@ public:
     //Getters and setters
     int GetTimeDelay();
     void SetTimeDelay(int x);
-    int GetTimeRemembered();
-    void SetTimeRemembered(int x);
     int GetPercentRandomAction();
     void SetPercentRandomAction(int x);
     int GetPercentCertainty();

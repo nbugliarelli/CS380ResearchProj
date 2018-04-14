@@ -84,7 +84,7 @@ PlayerActions ActionLogic::PredictNextMove()
         if(HighestPercentNextAction > PercentCertainty)
         {
             //return percieved next action if we can determine one within acceptable margin of error
-            return PlayerActions::Block;
+            return PlayerActions::Crouch;
         }
     }
     return TakeRandomAction();
@@ -92,7 +92,7 @@ PlayerActions ActionLogic::PredictNextMove()
 
 PlayerActions ActionLogic::TakeRandomAction()
 {
-    return PlayerActions::Block;
+    return PlayerActions::Crouch;
 }
 int ActionLogic::GetPercentRandomAction()
 {
@@ -116,20 +116,10 @@ void ActionLogic::SetPercentCertainty(int x)
 
 int ActionLogic::GetTimeDelay()
 {
-    return FrameDelay;
+    return TimeDelay;
 }
 
 void ActionLogic::SetTimeDelay(int x)
 {
-    FrameDelay = x;
-}
-
-int ActionLogic::GetTimeRemembered()
-{
-    return FramesRemembered;
-}
-
-void ActionLogic::SetTimeRemembered(int x)
-{
-    FramesRemembered = x;
+    TimeDelay = x;
 }
