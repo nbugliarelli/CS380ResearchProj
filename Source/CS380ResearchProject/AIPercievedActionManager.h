@@ -12,46 +12,31 @@
 UENUM(BlueprintType)
 enum class PlayerActions : uint8
 {
-    Foward UMETA(DisplayName = "Foward"),
-    Backward UMETA(DisplayName = "Backward"),
-    Idle UMETA(DisplayName = "Idle"),
-    Uppercut UMETA(DisplayName = "Uppercut"),
-    Hook UMETA(DisplayName = "Hook"),
-    WithinRange UMETA(DisplayName = "WithinRange"),
-    Crouch UMETA(DisplayName = "Crouch"),
-    Counter UMETA(DisplayName = "Counter")
+	Punch UMETA(DisplayName = "Punch"),
+	Kick UMETA(DisplayName = "Kick"),
+	Block UMETA(DisplayName = "Block")
 };
 
 class ActionLogic
 {
 public:
-    //Member variables
     std::queue<std::pair<PlayerActions, float>> ActionList;
-    float RollingWindow = 30.0f;
+    float RollingWindow;
     float Time;
     int PercentRandomAction;
     int PercentCertainty;
-    int TimeDelay;
-    int TimeRemembered;
 
-    //Methods that actually do things
-    void PushAction(PlayerActions Action);
     PlayerActions TakeRandomAction();
-    PlayerActions PredictNextMove();
-
-    //Getters and setters
-    int GetTimeDelay();
-    void SetTimeDelay(int x);
-    int GetTimeRemembered();
-    void SetTimeRemembered(int x);
     int GetPercentRandomAction();
     void SetPercentRandomAction(int x);
     int GetPercentCertainty();
     void SetPercentCertainty(int x);
     float GetRollingWindow();
     void SetRollingWindow(float Window);
+    void PushAction(PlayerActions Action);
     float GetGameTime();
     void SetGameTime(float time);
+    PlayerActions PredictNextMove();
 };
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
