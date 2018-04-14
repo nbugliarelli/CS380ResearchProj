@@ -94,3 +94,42 @@ PlayerActions ActionLogic::TakeRandomAction()
 {
     return PlayerActions::Block;
 }
+int ActionLogic::GetPercentRandomAction()
+{
+    return PercentRandomAction;
+}
+
+void ActionLogic::SetPercentRandomAction(int x)
+{
+    PercentRandomAction = x;
+}
+
+int ActionLogic::GetPercentCertainty()
+{
+    return PercentCertainty;
+}
+
+void ActionLogic::SetPercentCertainty(int x)
+{
+    PercentCertainty = x;
+}
+
+int ActionLogic::GetTimeDelay()
+{
+    return FrameDelay;
+}
+
+void ActionLogic::SetTimeDelay(int x)
+{
+    FrameDelay = x;
+}
+
+int ActionLogic::GetTimeRemembered()
+{
+    return FramesRemembered;
+}
+
+void ActionLogic::SetTimeRemembered(int x)
+{
+    FramesRemembered = x;
+}
