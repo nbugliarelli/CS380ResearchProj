@@ -45,6 +45,7 @@ void UAIPercievedActionManager::RecieveAction(PlayerActions action, AActor* acto
 void UAIPercievedActionManager::SetGameTime(float Time)
 {
     AL->SetGameTime(Time);
+    //AL.PushAction(action, Time);
 }
 
 float ActionLogic::GetRollingWindow()
@@ -74,9 +75,9 @@ void ActionLogic::SetGameTime(float time)
 
 PlayerActions ActionLogic::PredictNextMove()
 {
-    int PercentChance = rand() % 100 + 1;
-    if (PercentChance > PercentRandomAction)
+    if (ActionList.empty())
     {
+<<<<<<< HEAD
         
         return RunNGram();
     }
@@ -232,3 +233,12 @@ void ActionLogic::SetTimeDelay(int x)
 {
     TimeDelay = x;
 }
+=======
+        return PlayerActions::Block;
+    }
+    else
+    {
+        return ActionList.front().first;
+    }
+}
+>>>>>>> parent of eb7cbd8... Merge branch 'master' of https://github.com/nbugliarelli/CS380ResearchProj
