@@ -4,14 +4,15 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include <queue>
+#include <list>
+#include <vector>
 #include "AIPercievedActionManager.generated.h"
 
 
-
 UENUM(BlueprintType)
-enum class PlayerActions : uint8
+enum  PlayerActions
 {
+    InsufficentData,
     Foward UMETA(DisplayName = "Foward"),
     Backward UMETA(DisplayName = "Backward"),
     Idle UMETA(DisplayName = "Idle"),
@@ -19,24 +20,36 @@ enum class PlayerActions : uint8
     Hook UMETA(DisplayName = "Hook"),
     WithinRange UMETA(DisplayName = "WithinRange"),
     Crouch UMETA(DisplayName = "Crouch"),
-    Counter UMETA(DisplayName = "Counter")
+    Counter UMETA(DisplayName = "Counter"),
+
+
+    TOTAL
 };
 
 class ActionLogic
 {
 public:
     //Member variables
-    std::queue<std::pair<PlayerActions, float>> ActionList;
+    std::list<std::pair<PlayerActions, float>> ActionList;
     float RollingWindow = 30.0f;
     float Time;
     int PercentRandomAction;
     int PercentCertainty;
     int TimeDelay;
+    int UniGramOccurances[TOTAL] = { 0 };
+    int BiGramOccurances[TOTAL] = { 0 };
+    int TriGramOccurances[TOTAL] = { 0 };
+    int FourGramOccurances[TOTAL] = { 0 };
 
     //Methods that actually do things
     void PushAction(PlayerActions Action);
     PlayerActions TakeRandomAction();
     PlayerActions PredictNextMove();
+    PlayerActions RunNGram();
+    PlayerActions RunUniGram(std::list<std::pair<PlayerActions, float>>::iterator Start);
+    PlayerActions RunBiGram(std::list<std::pair<PlayerActions, float>>::iterator Start);
+    PlayerActions RunTriGram(std::list<std::pair<PlayerActions, float>>::iterator Start);
+    PlayerActions TotalArray(int* Array);
 
     //Getters and setters
     int GetTimeDelay();
