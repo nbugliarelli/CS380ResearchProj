@@ -35,11 +35,13 @@ public:
     float Time;
     int PercentRandomAction;
     int PercentCertainty;
-    int TimeDelay;
+    float TimeDelay = 0.03f;
     int UniGramOccurances[TOTAL] = { 0 };
     int BiGramOccurances[TOTAL] = { 0 };
     int TriGramOccurances[TOTAL] = { 0 };
-    int FourGramOccurances[TOTAL] = { 0 };
+    //int FourGramOccurances[TOTAL] = { 0 };
+    PlayerActions PredictedNextMove;
+    float PredictedPercentCertain;
 
     //Methods that actually do things
     void PushAction(PlayerActions Action);
@@ -50,17 +52,23 @@ public:
     PlayerActions RunBiGram(std::list<std::pair<PlayerActions, float>>::iterator Start);
     PlayerActions RunTriGram(std::list<std::pair<PlayerActions, float>>::iterator Start);
     PlayerActions TotalArray(int* Array);
+    void DropOldPlayerInputs();
 
     //Getters and setters
-    int GetTimeDelay();
-    void SetTimeDelay(int x);
+    float GetTimeDelay();
+    void SetTimeDelay(float x);
     int GetPercentRandomAction();
     void SetPercentRandomAction(int x);
     int GetPercentCertainty();
+    void SetPercentCertainty(int x);
     float GetRollingWindow();
     void SetRollingWindow(float Window);
     float GetGameTime();
     void SetGameTime(float time);
+    float GetPredictedPercentCertain();
+    void SetPredictedPercentCertain(float x);
+    PlayerActions GetPredictedNextMove();
+    void SetPredictedNextMove(PlayerActions x);
 };
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
@@ -87,5 +95,11 @@ public:
 
     UFUNCTION(BlueprintCallable)
     void SetGameTime(float Time);
+
+    UFUNCTION(BlueprintCallable)
+        PlayerActions GetPreditction();
+
+    UFUNCTION(BlueprintCallable)
+        float GetPercentCertain();
 	
 };
