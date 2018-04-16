@@ -212,11 +212,14 @@ PlayerActions ActionLogic::TotalArray(int* Array)
 
     for (int i = 0; i < TOTAL; ++i)
     {
-        if (Array[i] > HighestOccurance)
+        if (Array[i] > 0)
         {
-            HighestOccurance = Array[i];
             ++NumberOfOccurance;
-            HighestAction = static_cast<PlayerActions>(i);
+            if(Array[i] > HighestOccurance)
+            {
+                HighestOccurance = Array[i];
+                HighestAction = static_cast<PlayerActions>(i);
+            }
         }
     }
 
