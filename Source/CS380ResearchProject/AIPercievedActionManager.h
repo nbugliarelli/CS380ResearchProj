@@ -12,7 +12,7 @@
 UENUM(BlueprintType)
 enum  PlayerActions
 {
-    InsufficentData,
+    NoPrediction,
     Foward UMETA(DisplayName = "Foward"),
     Backward UMETA(DisplayName = "Backward"),
     Idle UMETA(DisplayName = "Idle"),
@@ -33,8 +33,8 @@ public:
     std::list<std::pair<PlayerActions, float>> ActionList;
     UPROPERTY(EditAnywhere, Category = AI)float RollingWindow = 30.0f;
     float Time;
-    UPROPERTY(EditAnywhere, Category = AI)int PercentRandomAction = 20;
-    UPROPERTY(EditAnywhere, Category = AI)int PercentCertainty = 50;
+    UPROPERTY(EditAnywhere, Category = AI) float PercentRandomAction = 0.20f;
+    UPROPERTY(EditAnywhere, Category = AI) float PercentCertainty = 0.50f;
     UPROPERTY(EditAnywhere, Category = AI) float TimeDelay = 0.3f;
     int UniGramOccurances[TOTAL] = { 0 };
     int BiGramOccurances[TOTAL] = { 0 };
@@ -57,10 +57,10 @@ public:
     //Getters and setters
     float GetTimeDelay();
     void SetTimeDelay(float x);
-    int GetPercentRandomAction();
-    void SetPercentRandomAction(int x);
-    int GetPercentCertainty();
-    void SetPercentCertainty(int x);
+    float GetPercentRandomAction();
+    void SetPercentRandomAction(float x);
+    float GetPercentCertainty();
+    void SetPercentCertainty(float x);
     float GetRollingWindow();
     void SetRollingWindow(float Window);
     float GetGameTime();

@@ -32,7 +32,8 @@ void UAIPercievedActionManager::BeginPlay()
 void UAIPercievedActionManager::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-    printf("%d", AL->PredictNextMove());
+    AL->DropOldPlayerInputs();
+    AL->PredictNextMove();
 	// ...
 
 }
@@ -110,11 +111,12 @@ void ActionLogic::SetPredictedNextMove(PlayerActions x)
 
 PlayerActions ActionLogic::PredictNextMove()
 {
-    if (!ActionList.empty())
+    float Random = rand() / (RAND_MAX);
+    if (!ActionList.empty() && Random > PercentRandomAction)
     {
         return RunNGram();
     }
-    return TakeRandomAction();
+    return NoPrediction;
 }
 
 PlayerActions ActionLogic::RunNGram()
@@ -122,7 +124,7 @@ PlayerActions ActionLogic::RunNGram()
     //If list is empty or only one entry
     if(ActionList.size() <= 1)
     {
-        return PlayerActions::InsufficentData;
+        return PlayerActions::NoPrediction;
     }
 
     //Ignore things before reaction time
@@ -132,14 +134,14 @@ PlayerActions ActionLogic::RunNGram()
         ++ListWalker;
         if (ListWalker == ActionList.end())
         {
-            return PlayerActions::InsufficentData;
+            return PlayerActions::NoPrediction;
         }
     }
     PlayerActions Result = RunTriGram(ListWalker);
-    if(Result == PlayerActions::InsufficentData)
+    if(Result == PlayerActions::NoPrediction)
     {
         Result = RunBiGram(ListWalker);
-        if (Result == PlayerActions::InsufficentData)
+        if (Result == PlayerActions::NoPrediction)
         {
             Result = RunUniGram(ListWalker);
         }
@@ -162,7 +164,7 @@ PlayerActions ActionLogic::RunBiGram(std::list<std::pair<PlayerActions, float>>:
 {
     if(ActionList.size() < 2)
     {
-        return PlayerActions::InsufficentData;
+        return PlayerActions::NoPrediction;
     }
     auto BiGram = Start;
     auto BiGram2 = BiGram;
@@ -184,7 +186,7 @@ PlayerActions ActionLogic::RunTriGram(std::list<std::pair<enum PlayerActions, fl
 {
     if (ActionList.size() < 3)
     {
-        return PlayerActions::InsufficentData;
+        return PlayerActions::NoPrediction;
     }
     auto TriGram = Start;
 
@@ -213,7 +215,7 @@ PlayerActions ActionLogic::TotalArray(int* Array)
 {
     int HighestOccurance = 0;
     int NumberOfOccurance = 0;
-    PlayerActions HighestAction = InsufficentData;
+    PlayerActions HighestAction = NoPrediction;
 
     for (int i = 0; i < TOTAL; ++i)
     {
@@ -228,11 +230,18 @@ PlayerActions ActionLogic::TotalArray(int* Array)
         }
     }
 
-    float Percent = 100.0f * (static_cast<float>(HighestOccurance) / static_cast<float>(NumberOfOccurance));
+    float Percent = static_cast<float>(HighestOccurance) / static_cast<float>(NumberOfOccurance);
 
     for(int i = 0; i < TOTAL; ++i)
     {
         Array[i] = 0;
+    }
+
+    if(Percent < PercentCertainty)
+    {
+        SetPredictedNextMove(NoPrediction);
+        SetPredictedPercentCertain(0.0f);
+        return NoPrediction;
     }
 
     SetPredictedNextMove(HighestAction);
@@ -258,22 +267,22 @@ PlayerActions ActionLogic::TakeRandomAction()
     }
     return static_cast<PlayerActions>(RandomAction);
 }
-int ActionLogic::GetPercentRandomAction()
+float ActionLogic::GetPercentRandomAction()
 {
     return PercentRandomAction;
 }
 
-void ActionLogic::SetPercentRandomAction(int x)
+void ActionLogic::SetPercentRandomAction(float x)
 {
     PercentRandomAction = x;
 }
 
-int ActionLogic::GetPercentCertainty()
+float ActionLogic::GetPercentCertainty()
 {
     return PercentCertainty;
 }
 
-void ActionLogic::SetPercentCertainty(int x)
+void ActionLogic::SetPercentCertainty(float x)
 {
     PercentCertainty = x;
 }
