@@ -58,6 +58,11 @@ float UAIPercievedActionManager::GetPercentCertain()
     return AL->GetPredictedPercentCertain();
 }
 
+float UAIPercievedActionManager::ClearHistory()
+{
+    AL->ActionList.clear();
+}
+
 float ActionLogic::GetRollingWindow()
 {
     return RollingWindow;

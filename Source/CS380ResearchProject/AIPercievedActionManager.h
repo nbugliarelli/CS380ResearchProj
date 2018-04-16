@@ -101,5 +101,6 @@ public:
 
     UFUNCTION(BlueprintCallable)
         float GetPercentCertain();
-	
+    UFUNCTION(BlueprintCallable)
+        float ClearHistory();
 };
