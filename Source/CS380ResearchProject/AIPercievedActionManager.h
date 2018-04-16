@@ -31,11 +31,11 @@ class ActionLogic
 public:
     //Member variables
     std::list<std::pair<PlayerActions, float>> ActionList;
-    float RollingWindow = 30.0f;
+    UPROPERTY(EditAnywhere, Category = AI)float RollingWindow = 30.0f;
     float Time;
-    int PercentRandomAction;
-    int PercentCertainty;
-    float TimeDelay = 0.03f;
+    UPROPERTY(EditAnywhere, Category = AI)int PercentRandomAction = 20;
+    UPROPERTY(EditAnywhere, Category = AI)int PercentCertainty = 50;
+    UPROPERTY(EditAnywhere, Category = AI) float TimeDelay = 0.3f;
     int UniGramOccurances[TOTAL] = { 0 };
     int BiGramOccurances[TOTAL] = { 0 };
     int TriGramOccurances[TOTAL] = { 0 };
@@ -102,5 +102,5 @@ public:
     UFUNCTION(BlueprintCallable)
         float GetPercentCertain();
     UFUNCTION(BlueprintCallable)
-        float ClearHistory();
+        void ClearHistory();
 };

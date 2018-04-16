@@ -58,7 +58,7 @@ float UAIPercievedActionManager::GetPercentCertain()
     return AL->GetPredictedPercentCertain();
 }
 
-float UAIPercievedActionManager::ClearHistory()
+void UAIPercievedActionManager::ClearHistory()
 {
     AL->ActionList.clear();
 }
