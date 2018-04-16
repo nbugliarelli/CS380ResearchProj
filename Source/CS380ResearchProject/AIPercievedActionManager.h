@@ -33,7 +33,6 @@ public:
     std::list<std::pair<PlayerActions, float>> ActionList;
     float RollingWindow = 30.0f;
     float Time;
-<<<<<<< HEAD
     int PercentRandomAction;
     int PercentCertainty;
     int TimeDelay;
@@ -58,10 +57,6 @@ public:
     int GetPercentRandomAction();
     void SetPercentRandomAction(int x);
     int GetPercentCertainty();
-    void SetPercentCertainty(int x);
-=======
-
->>>>>>> parent of eb7cbd8... Merge branch 'master' of https://github.com/nbugliarelli/CS380ResearchProj
     float GetRollingWindow();
     void SetRollingWindow(float Window);
     float GetGameTime();
