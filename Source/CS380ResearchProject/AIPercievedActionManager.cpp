@@ -162,7 +162,7 @@ PlayerActions ActionLogic::RunBiGram(std::list<std::pair<PlayerActions, float>>:
     auto BiGram = Start;
     auto BiGram2 = BiGram;
     ++BiGram2;
-    PlayerActions Prefix = BiGram2->first;
+    PlayerActions Prefix = BiGram->first;
     while (BiGram2 != ActionList.end())
     {
         if (BiGram2->first == Prefix)
@@ -189,8 +189,8 @@ PlayerActions ActionLogic::RunTriGram(std::list<std::pair<enum PlayerActions, fl
     auto TriGram3 = TriGram2;
     ++TriGram3;
 
-    PlayerActions Prefix = TriGram3->first;
-    PlayerActions Prefix2 = TriGram2->first;
+    PlayerActions Prefix = TriGram2->first;
+    PlayerActions Prefix2 = TriGram->first;
     while (TriGram3 != ActionList.end())
     {
         if (TriGram3->first == Prefix && TriGram2->first == Prefix2)
