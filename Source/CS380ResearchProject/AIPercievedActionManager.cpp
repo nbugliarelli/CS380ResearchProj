@@ -48,6 +48,16 @@ void UAIPercievedActionManager::SetGameTime(float Time)
     //AL.PushAction(action, Time);
 }
 
+PlayerActions UAIPercievedActionManager::GetPreditction()
+{
+    return AL->GetPredictedNextMove();
+}
+
+float UAIPercievedActionManager::GetPercentCertain()
+{
+    return AL->GetPredictedPercentCertain();
+}
+
 float ActionLogic::GetRollingWindow()
 {
     return RollingWindow;
@@ -73,12 +83,30 @@ void ActionLogic::SetGameTime(float time)
     Time = time;
 }
 
+float ActionLogic::GetPredictedPercentCertain()
+{
+    return PredictedPercentCertain;
+}
+
+void ActionLogic::SetPredictedPercentCertain(float x)
+{
+    PredictedPercentCertain = x;
+}
+
+PlayerActions ActionLogic::GetPredictedNextMove()
+{
+    return PredictedNextMove;
+}
+
+void ActionLogic::SetPredictedNextMove(PlayerActions x)
+{
+    PredictedNextMove = x;
+}
+
 PlayerActions ActionLogic::PredictNextMove()
 {
-    if (ActionList.empty())
+    if (!ActionList.empty())
     {
-<<<<<<< HEAD
-        
         return RunNGram();
     }
     return TakeRandomAction();
@@ -181,28 +209,46 @@ PlayerActions ActionLogic::TotalArray(int* Array)
     int HighestOccurance = 0;
     int NumberOfOccurance = 0;
     PlayerActions HighestAction = InsufficentData;
-    bool TieOccured = false;
 
     for (int i = 0; i < TOTAL; ++i)
     {
-        if (Array[i] >= HighestOccurance)
+        if (Array[i] > HighestOccurance)
         {
-            if (Array[i] == HighestOccurance)
-            {
-                TieOccured = true;
-            }
             HighestOccurance = Array[i];
             ++NumberOfOccurance;
             HighestAction = static_cast<PlayerActions>(i);
         }
     }
+
+    float Percent = 100.0f * (static_cast<float>(HighestOccurance) / static_cast<float>(NumberOfOccurance));
+
+    for(int i = 0; i < TOTAL; ++i)
+    {
+        Array[i] = 0;
+    }
+
+    SetPredictedNextMove(HighestAction);
+    SetPredictedPercentCertain(Percent);
+
     return HighestAction;
 }
 
+void ActionLogic::DropOldPlayerInputs()
+{
+    while(!ActionList.empty() && ActionList.back().second < Time - RollingWindow)
+    {
+        ActionList.pop_back();
+    }
+}
 
 PlayerActions ActionLogic::TakeRandomAction()
 {
-    return PlayerActions::Crouch;
+    int RandomAction =  rand() % (TOTAL - 1) + 1;
+    while (RandomAction == WithinRange)
+    {
+        RandomAction = rand() % (TOTAL - 1) + 1;
+    }
+    return static_cast<PlayerActions>(RandomAction);
 }
 int ActionLogic::GetPercentRandomAction()
 {
@@ -224,21 +270,12 @@ void ActionLogic::SetPercentCertainty(int x)
     PercentCertainty = x;
 }
 
-int ActionLogic::GetTimeDelay()
+float ActionLogic::GetTimeDelay()
 {
     return TimeDelay;
 }
 
-void ActionLogic::SetTimeDelay(int x)
+void ActionLogic::SetTimeDelay(float x)
 {
     TimeDelay = x;
 }
-=======
-        return PlayerActions::Block;
-    }
-    else
-    {
-        return ActionList.front().first;
-    }
-}
->>>>>>> parent of eb7cbd8... Merge branch 'master' of https://github.com/nbugliarelli/CS380ResearchProj
