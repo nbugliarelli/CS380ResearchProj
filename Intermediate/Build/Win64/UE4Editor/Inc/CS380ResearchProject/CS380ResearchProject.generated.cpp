@@ -25,6 +25,7 @@ void EmptyLinkFunctionForGeneratedCode1CS380ResearchProject() {}
 	ENGINE_API class UClass* Z_Construct_UClass_AActor();
 
 	CS380RESEARCHPROJECT_API class UEnum* Z_Construct_UEnum_CS380ResearchProject_PlayerActions();
+	CS380RESEARCHPROJECT_API class UFunction* Z_Construct_UFunction_UAIPercievedActionManager_ClearHistory();
 	CS380RESEARCHPROJECT_API class UFunction* Z_Construct_UFunction_UAIPercievedActionManager_GetPercentCertain();
 	CS380RESEARCHPROJECT_API class UFunction* Z_Construct_UFunction_UAIPercievedActionManager_GetPreditction();
 	CS380RESEARCHPROJECT_API class UFunction* Z_Construct_UFunction_UAIPercievedActionManager_RecieveAction();
@@ -61,7 +62,7 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_PlayerActions(PlayerActi
 		{
 			ReturnEnum = new(EC_InternalUseOnlyConstructor, Outer, TEXT("PlayerActions"), RF_Public|RF_Transient|RF_MarkAsNative) UEnum(FObjectInitializer());
 			TArray<TPair<FName, int64>> EnumNames;
-			EnumNames.Emplace(TEXT("InsufficentData"), 0);
+			EnumNames.Emplace(TEXT("NoPrediction"), 0);
 			EnumNames.Emplace(TEXT("Foward"), 1);
 			EnumNames.Emplace(TEXT("Backward"), 2);
 			EnumNames.Emplace(TEXT("Idle"), 3);
@@ -90,17 +91,34 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_PlayerActions(PlayerActi
 		}
 		return ReturnEnum;
 	}
-	uint32 Get_Z_Construct_UEnum_CS380ResearchProject_PlayerActions_CRC() { return 3511917436U; }
+	uint32 Get_Z_Construct_UEnum_CS380ResearchProject_PlayerActions_CRC() { return 651357247U; }
 	void UAIPercievedActionManager::StaticRegisterNativesUAIPercievedActionManager()
 	{
 		UClass* Class = UAIPercievedActionManager::StaticClass();
 		static const TNameNativePtrPair<ANSICHAR> AnsiFuncs[] = {
+			{ "ClearHistory", (Native)&UAIPercievedActionManager::execClearHistory },
 			{ "GetPercentCertain", (Native)&UAIPercievedActionManager::execGetPercentCertain },
 			{ "GetPreditction", (Native)&UAIPercievedActionManager::execGetPreditction },
 			{ "RecieveAction", (Native)&UAIPercievedActionManager::execRecieveAction },
 			{ "SetGameTime", (Native)&UAIPercievedActionManager::execSetGameTime },
 		};
-		FNativeFunctionRegistrar::RegisterFunctions(Class, AnsiFuncs, 4);
+		FNativeFunctionRegistrar::RegisterFunctions(Class, AnsiFuncs, 5);
+	}
+	UFunction* Z_Construct_UFunction_UAIPercievedActionManager_ClearHistory()
+	{
+		UObject* Outer=Z_Construct_UClass_UAIPercievedActionManager();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("ClearHistory"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), NULL, 0x04020401, 65535);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("AIPercievedActionManager.h"));
+#endif
+		}
+		return ReturnFunction;
 	}
 	UFunction* Z_Construct_UFunction_UAIPercievedActionManager_GetPercentCertain()
 	{
@@ -205,11 +223,13 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_PlayerActions(PlayerActi
 				UObjectForceRegistration(OuterClass);
 				OuterClass->ClassFlags |= 0x20B00080;
 
+				OuterClass->LinkChild(Z_Construct_UFunction_UAIPercievedActionManager_ClearHistory());
 				OuterClass->LinkChild(Z_Construct_UFunction_UAIPercievedActionManager_GetPercentCertain());
 				OuterClass->LinkChild(Z_Construct_UFunction_UAIPercievedActionManager_GetPreditction());
 				OuterClass->LinkChild(Z_Construct_UFunction_UAIPercievedActionManager_RecieveAction());
 				OuterClass->LinkChild(Z_Construct_UFunction_UAIPercievedActionManager_SetGameTime());
 
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UAIPercievedActionManager_ClearHistory(), "ClearHistory"); // 2503323145
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UAIPercievedActionManager_GetPercentCertain(), "GetPercentCertain"); // 2451295573
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UAIPercievedActionManager_GetPreditction(), "GetPreditction"); // 558362256
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UAIPercievedActionManager_RecieveAction(), "RecieveAction"); // 2782256709
@@ -229,7 +249,7 @@ static FCompiledInDeferEnum Z_CompiledInDeferEnum_UEnum_PlayerActions(PlayerActi
 		check(OuterClass->GetClass());
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(UAIPercievedActionManager, 3888913183);
+	IMPLEMENT_CLASS(UAIPercievedActionManager, 1625138524);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_UAIPercievedActionManager(Z_Construct_UClass_UAIPercievedActionManager, &UAIPercievedActionManager::StaticClass, TEXT("/Script/CS380ResearchProject"), TEXT("UAIPercievedActionManager"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(UAIPercievedActionManager);
 	void ABaseCharacter::StaticRegisterNativesABaseCharacter()
@@ -407,8 +427,8 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), nullptr, FName(TEXT("/Script/CS380ResearchProject")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0xED49D503;
-			Guid.B = 0x1F8154C7;
+			Guid.A = 0x85F882D0;
+			Guid.B = 0xBB035872;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);
