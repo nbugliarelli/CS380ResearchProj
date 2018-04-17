@@ -12,7 +12,7 @@
 UENUM(BlueprintType)
 enum  PlayerActions
 {
-    InsufficentData,
+    NoPrediction,
     Foward UMETA(DisplayName = "Foward"),
     Backward UMETA(DisplayName = "Backward"),
     Idle UMETA(DisplayName = "Idle"),
@@ -31,11 +31,11 @@ class ActionLogic
 public:
     //Member variables
     std::list<std::pair<PlayerActions, float>> ActionList;
-    float RollingWindow = 30.0f;
+    UPROPERTY(EditAnywhere, Category = AI)float RollingWindow = 30.0f;
     float Time;
-    int PercentRandomAction;
-    int PercentCertainty;
-    float TimeDelay = 0.03f;
+    UPROPERTY(EditAnywhere, Category = AI) float PercentRandomAction = 0.20f;
+    UPROPERTY(EditAnywhere, Category = AI) float PercentCertainty = 0.50f;
+    UPROPERTY(EditAnywhere, Category = AI) float TimeDelay = 0.3f;
     int UniGramOccurances[TOTAL] = { 0 };
     int BiGramOccurances[TOTAL] = { 0 };
     int TriGramOccurances[TOTAL] = { 0 };
@@ -57,10 +57,10 @@ public:
     //Getters and setters
     float GetTimeDelay();
     void SetTimeDelay(float x);
-    int GetPercentRandomAction();
-    void SetPercentRandomAction(int x);
-    int GetPercentCertainty();
-    void SetPercentCertainty(int x);
+    float GetPercentRandomAction();
+    void SetPercentRandomAction(float x);
+    float GetPercentCertainty();
+    void SetPercentCertainty(float x);
     float GetRollingWindow();
     void SetRollingWindow(float Window);
     float GetGameTime();
@@ -101,5 +101,6 @@ public:
 
     UFUNCTION(BlueprintCallable)
         float GetPercentCertain();
-	
+    UFUNCTION(BlueprintCallable)
+        void ClearHistory();
 };
