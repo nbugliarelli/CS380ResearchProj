@@ -64,6 +64,11 @@ void UAIPercievedActionManager::ClearHistory()
     AL->ActionList.clear();
 }
 
+int UAIPercievedActionManager::GetNgram()
+{
+    return AL->GetNGramFound();
+}
+
 ActionLogic::ActionLogic()
 {
     for(int i = 0; i < TOTAL; ++i)
@@ -125,6 +130,16 @@ void ActionLogic::SetPredictedNextMove(PlayerActions x)
     PredictedNextMove = x;
 }
 
+int ActionLogic::GetNGramFound()
+{
+    return NGramFound;
+}
+
+void ActionLogic::SetNGramFound(int x)
+{
+    NGramFound = x;
+}
+
 PlayerActions ActionLogic::PredictNextMove()
 {
     float Random = (static_cast<float>(rand()) /RAND_MAX);
@@ -132,6 +147,7 @@ PlayerActions ActionLogic::PredictNextMove()
     {
         return RunNGram();
     }
+    NGramFound = 0;
     return NoPrediction;
 }
 
@@ -162,11 +178,16 @@ PlayerActions ActionLogic::RunNGram()
             Result = RunUniGram(ListWalker);
         }
     }
+    if(Result == NoPrediction)
+    {
+        NGramFound = 0;
+    }
     return Result;
 }
 
 PlayerActions ActionLogic::RunUniGram(std::list<std::pair<PlayerActions, float>>::iterator Start)
 {
+    NGramFound = 1;
     auto UniGram = Start;
     while (UniGram != ActionList.end())
     {
@@ -182,6 +203,7 @@ PlayerActions ActionLogic::RunBiGram(std::list<std::pair<PlayerActions, float>>:
     {
         return PlayerActions::NoPrediction;
     }
+    NGramFound = 2;
     auto BiGram = Start;
     auto BiGram2 = BiGram;
     ++BiGram2;
@@ -204,6 +226,7 @@ PlayerActions ActionLogic::RunTriGram(std::list<std::pair<enum PlayerActions, fl
     {
         return PlayerActions::NoPrediction;
     }
+    NGramFound = 3;
     auto TriGram = Start;
 
     auto TriGram2 = TriGram;
