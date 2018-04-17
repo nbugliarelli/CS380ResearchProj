@@ -237,7 +237,7 @@ PlayerActions ActionLogic::TotalArray(int* Array)
     {
         if (Array[i] > 0)
         {
-            ++NumberOfOccurance;
+            NumberOfOccurance += Array[i];
             if(Array[i] > HighestOccurance)
             {
                 HighestOccurance = Array[i];
