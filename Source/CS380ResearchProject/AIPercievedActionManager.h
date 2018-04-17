@@ -32,7 +32,7 @@ public:
     //Member variables
     std::list<std::pair<PlayerActions, float>> ActionList;
     float RollingWindow = 30.0f;
-    float Time;
+    float Time = 0.0f;
     float PercentRandomAction = 0.20f;
     float PercentCertainty = 0.50f;
     float TimeDelay = 0.3f;
@@ -40,10 +40,11 @@ public:
     int BiGramOccurances[TOTAL] = { 0 };
     int TriGramOccurances[TOTAL] = { 0 };
     //int FourGramOccurances[TOTAL] = { 0 };
-    PlayerActions PredictedNextMove;
-    float PredictedPercentCertain;
+    PlayerActions PredictedNextMove = NoPrediction;
+    float PredictedPercentCertain = 0;
 
     //Methods that actually do things
+    ActionLogic();
     void PushAction(PlayerActions Action);
     PlayerActions TakeRandomAction();
     PlayerActions PredictNextMove();

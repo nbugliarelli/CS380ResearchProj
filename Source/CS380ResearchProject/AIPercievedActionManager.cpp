@@ -64,6 +64,22 @@ void UAIPercievedActionManager::ClearHistory()
     AL->ActionList.clear();
 }
 
+ActionLogic::ActionLogic()
+{
+    for(int i = 0; i < TOTAL; ++i)
+    {
+        UniGramOccurances[i] = 0;
+    }
+    for (int i = 0; i < TOTAL; ++i)
+    {
+        BiGramOccurances[i] = 0;
+    }
+    for (int i = 0; i < TOTAL; ++i)
+    {
+        TriGramOccurances[i] = 0;
+    }
+}
+
 float ActionLogic::GetRollingWindow()
 {
     return RollingWindow;
@@ -111,7 +127,7 @@ void ActionLogic::SetPredictedNextMove(PlayerActions x)
 
 PlayerActions ActionLogic::PredictNextMove()
 {
-    float Random = rand() / (RAND_MAX);
+    float Random = (static_cast<float>(rand()) /RAND_MAX);
     if (!ActionList.empty() && Random > PercentRandomAction)
     {
         return RunNGram();
