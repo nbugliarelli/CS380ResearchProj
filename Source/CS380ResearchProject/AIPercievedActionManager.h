@@ -42,6 +42,7 @@ public:
     //int FourGramOccurances[TOTAL] = { 0 };
     PlayerActions PredictedNextMove = NoPrediction;
     float PredictedPercentCertain = 0;
+    int NGramFound = 0;
 
     //Methods that actually do things
     ActionLogic();
@@ -70,6 +71,8 @@ public:
     void SetPredictedPercentCertain(float x);
     PlayerActions GetPredictedNextMove();
     void SetPredictedNextMove(PlayerActions x);
+    int GetNGramFound();
+    void SetNGramFound(int x);
 };
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
@@ -104,4 +107,6 @@ public:
         float GetPercentCertain();
     UFUNCTION(BlueprintCallable)
         void ClearHistory();
+    UFUNCTION(BlueprintCallable)
+        int GetNgram();
 };
