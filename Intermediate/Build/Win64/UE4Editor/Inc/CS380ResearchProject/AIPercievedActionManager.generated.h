@@ -14,7 +14,15 @@ class AActor;
 #endif
 #define CS380RESEARCHPROJECT_AIPercievedActionManager_generated_h
 
-#define CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_78_RPC_WRAPPERS \
+#define CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_81_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execGetNgram) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(int32*)Z_Param__Result=this->GetNgram(); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execClearHistory) \
 	{ \
@@ -60,7 +68,15 @@ class AActor;
 	}
 
 
-#define CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_78_RPC_WRAPPERS_NO_PURE_DECLS \
+#define CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_81_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execGetNgram) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(int32*)Z_Param__Result=this->GetNgram(); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execClearHistory) \
 	{ \
@@ -106,7 +122,7 @@ class AActor;
 	}
 
 
-#define CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_78_INCLASS_NO_PURE_DECLS \
+#define CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_81_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUAIPercievedActionManager(); \
 	friend CS380RESEARCHPROJECT_API class UClass* Z_Construct_UClass_UAIPercievedActionManager(); \
@@ -116,7 +132,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_78_INCLASS \
+#define CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_81_INCLASS \
 private: \
 	static void StaticRegisterNativesUAIPercievedActionManager(); \
 	friend CS380RESEARCHPROJECT_API class UClass* Z_Construct_UClass_UAIPercievedActionManager(); \
@@ -126,7 +142,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_78_STANDARD_CONSTRUCTORS \
+#define CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_81_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UAIPercievedActionManager(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UAIPercievedActionManager) \
@@ -139,7 +155,7 @@ private: \
 public:
 
 
-#define CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_78_ENHANCED_CONSTRUCTORS \
+#define CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_81_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API UAIPercievedActionManager(UAIPercievedActionManager&&); \
@@ -150,26 +166,26 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UAIPercievedActionManager); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(UAIPercievedActionManager)
 
 
-#define CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_78_PRIVATE_PROPERTY_OFFSET
-#define CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_75_PROLOG
-#define CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_78_GENERATED_BODY_LEGACY \
+#define CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_81_PRIVATE_PROPERTY_OFFSET
+#define CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_78_PROLOG
+#define CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_81_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_78_PRIVATE_PROPERTY_OFFSET \
-	CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_78_RPC_WRAPPERS \
-	CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_78_INCLASS \
-	CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_78_STANDARD_CONSTRUCTORS \
+	CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_81_PRIVATE_PROPERTY_OFFSET \
+	CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_81_RPC_WRAPPERS \
+	CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_81_INCLASS \
+	CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_81_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_78_GENERATED_BODY \
+#define CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_81_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_78_PRIVATE_PROPERTY_OFFSET \
-	CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_78_RPC_WRAPPERS_NO_PURE_DECLS \
-	CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_78_INCLASS_NO_PURE_DECLS \
-	CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_78_ENHANCED_CONSTRUCTORS \
+	CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_81_PRIVATE_PROPERTY_OFFSET \
+	CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_81_RPC_WRAPPERS_NO_PURE_DECLS \
+	CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_81_INCLASS_NO_PURE_DECLS \
+	CS380ResearchProj_Source_CS380ResearchProject_AIPercievedActionManager_h_81_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
